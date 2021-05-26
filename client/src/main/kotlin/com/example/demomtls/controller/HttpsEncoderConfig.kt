@@ -14,11 +14,9 @@ import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManagerFactory
 
 class HttpsEncoderConfig(
-    @Value("\${server.ssl.trust-store-password}")
+    @Value("\${key-store-password}")
     val trustStorePassword: String,
-    @Value("\${server.ssl.key-store}")
-    val keyStore: Resource,
-    @Value("\${server.ssl.key-store-password}")
+    @Value("\${trust-store-password}")
     val keyStorePassword: String,
     private  var resourceLoader: ResourceLoader
 ){

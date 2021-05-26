@@ -2,9 +2,6 @@ const fs = require('fs');
 const https = require('https');
 const certificate = fs.readFileSync('./certificate.pem')
 const key = fs.readFileSync('./mydomain.key')
-console.log(certificate.toString('utf-8'))
-console.log(key.toString('utf-8'))
-console.log('alou')
 https
     .createServer(
         {
@@ -17,9 +14,9 @@ https
             // ...
         },
         (req, res) => {
-            console.log(req.client.authorized)
+            console.log(`Authroized: ${req.client.authorized}`)
             if(!req.client.authorized){
-                res.writeHead(200);
+                res.writeHead(401);
                 res.end('client not certificated');
             }
             res.writeHead(200);
